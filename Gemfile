@@ -38,7 +38,8 @@ gem 'aws-sdk', '~> 2'
 gem "will_paginate", '~>3.0.5'
 gem 'dalli', "~> 2.6.4"
 gem "memcachier", "~> 0.0.2"
-gem 'kgio', "~>2.9.2"
+
+# gem 'kgio', "~>2.8.0"
 gem 'thinking-sphinx', '~> 3.1.1'
 gem 'flying-sphinx', "~>1.2.0"
 # Use patched v2.0.2
@@ -101,6 +102,18 @@ gem 'activerecord-session_store', "~> 0.1.2"
 # It adds `attr_protected` and `attr_accessor` methods to models.
 # We should remove this gem before upgrading to Rails 5
 gem 'protected_attributes', "~> 1.1.3"
+
+
+# Observers should be used only in test code. Do NOT use them in production
+# code.
+gem 'eventmachine', github: "eventmachine/eventmachine"
+
+gem 'kgio', '~> 2.10'
+#
+# Observers need to be placed in app/models and that's why they will get
+# loaded also in a non-test environment. That's also the reason why we need
+# to include the observers gem here and not in the :test group
+gem 'rails-observers', '~> 0.1.2'
 
 # Remove Emojis.
 # This will prevent MySQL from blowing up if someone's trying to insert Emojis
